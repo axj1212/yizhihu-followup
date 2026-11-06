@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>医智呼 · 评审登录</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231268d3'/><path d='M8 16h4l2-5 3 10 2-5h5' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>"/>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#eef4fc,#f7f9fc);color:#1f2937;
+    font-family:"Microsoft YaHei","PingFang SC","Segoe UI",system-ui,sans-serif;padding:20px}
+  .box{width:100%;max-width:400px;background:#fff;border:1px solid #e3e8ef;border-radius:16px;
+    padding:34px 32px 28px;box-shadow:0 12px 40px rgba(20,60,110,.10)}
+  .brand{display:flex;align-items:center;gap:11px;margin-bottom:26px}
+  .mark{width:38px;height:38px;border-radius:10px;background:#1268d3;color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700}
+  .brand b{display:block;font-size:17px;letter-spacing:1px}
+  .brand span{font-size:10px;color:#8b95a3;letter-spacing:1.4px}
+  h1{margin:0 0 4px;font-size:21px}
+  .sub{margin:0 0 24px;color:#6b7685;font-size:13px}
+  label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px}
+  input{width:100%;height:42px;border:1px solid #d9e1ec;border-radius:9px;padding:0 12px;
+    font-size:14px;outline:none;transition:border .18s,box-shadow .18s}
+  input:focus{border-color:#1268d3;box-shadow:0 0 0 3px rgba(18,104,211,.12)}
+  button{width:100%;height:44px;margin-top:22px;border:0;border-radius:9px;background:#1268d3;
+    color:#fff;font-size:15px;font-weight:600;cursor:pointer}
+  button:hover{background:#0d55b0}
+  .err{color:#c0392b;font-size:13px;min-height:20px;margin-top:10px;text-align:center}
+  .hint{margin-top:16px;padding:11px 13px;background:#f2f7fe;border:1px solid #d8e8fc;
+    border-radius:8px;font-size:12.5px;color:#31567f;text-align:center}
+  code{background:#e3eefc;padding:1px 5px;border-radius:4px;font-size:12.5px}
+  .tip{margin-top:14px;font-size:11.5px;color:#909aa8;line-height:1.7;text-align:center}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="brand"><div class="mark">医</div><div><b>医智呼</b><span>AI FOLLOW-UP CALL</span></div></div>
+  <h1>评审登录</h1>
+  <p class="sub">AI 随访外呼系统 · 竞赛演示环境</p>
+  <form id="f" autocomplete="off">
+    <label for="u">账号</label>
+    <input id="u" autocomplete="username" placeholder="请输入评审账号"/>
+    <label for="p">密码</label>
+    <input id="p" type="password" autocomplete="current-password" placeholder="请输入密码"/>
+    <button type="submit">进入系统</button>
+    <div class="err" id="e"></div>
+  </form>
+  <div class="hint">评审账号：<code>reviewer</code>　密码：<code>Yizhihu2026</code></div>
+  <div class="tip">静态演示版：数据为脱敏的接口快照，操作结果保存在浏览器内存中，刷新页面回到初始状态。</div>
+</div>
+<script>
+document.getElementById('f').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var u = document.getElementById('u').value.trim();
+  var p = document.getElementById('p').value;
+  if (u === 'reviewer' && p === 'Yizhihu2026') {
+    sessionStorage.setItem('yzh_reviewer', '1');
+    location.href = './';
+  } else {
+    document.getElementById('e').textContent = '账号或密码不正确，请重新输入';
+  }
+});
+</script>
+</body>
+</html>
